@@ -20,6 +20,34 @@ SCR_CampaignFactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/Fac
    m_DefendersGroupPrefab "{A6A3EDA237E3D336}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/AmbientPatrols/Group_RHS_RF_MSV_VKPO_S_FireGroup_NotSpawned.et"
   }
   SCR_CampaignFaction "{50B30C3ADB052C80}" {
+   m_aGroupRolePresetConfigs {
+    SCR_GroupRolePresetConfig "{6176805F751756E5}" {
+     m_iGroupSize 32
+    }
+   }
+   m_aPredefinedGroups {
+    SCR_GroupPreset "{6576F62BB24484CF}" {
+     m_bIsEnabled 0
+     m_iDefaultActiveRadioChannel 32000
+    }
+    SCR_GroupRolePresetConfig "{68C8A4364EDD3DD1}" {
+     m_bIsEnabled 0
+     m_iDefaultActiveRadioChannel 32000
+    }
+    SCR_GroupPreset "{648EC0248ABD596B}" {
+     m_iDefaultActiveRadioChannel 32001
+    }
+    SCR_GroupPreset "{648EC024A6B72088}" {
+     m_bIsEnabled 0
+     m_iDefaultActiveRadioChannel 32000
+    }
+    SCR_GroupPreset "{648EC0244EBE9E77}" {
+     m_bIsEnabled 0
+    }
+    SCR_GroupPreset "{648EC0244E6578A3}" {
+     m_bIsEnabled 0
+    }
+   }
    m_aEntityCatalogs {
     SCR_EntityCatalogMultiList "{5C68A0EEB3F124F9}" : "{FFA98C2BD27E14C8}Configs/EntityCatalog/US/InventoryItems_EntityCatalog_INF.conf" {
      m_eEntityCatalogType ITEM
