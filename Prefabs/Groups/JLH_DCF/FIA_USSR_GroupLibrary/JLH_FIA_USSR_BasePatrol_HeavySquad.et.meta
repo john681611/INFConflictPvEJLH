@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{A91F1A0000000005}Prefabs/Groups/JLH_DCF/FIA_USSR_GroupLibrary/JLH_FIA_USSR_BasePatrol_HeavySquad.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

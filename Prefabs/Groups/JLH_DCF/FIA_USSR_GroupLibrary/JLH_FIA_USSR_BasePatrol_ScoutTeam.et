@@ -1,0 +1,6 @@
+SCR_AIGroup : "{06F0C9675883F18A}Prefabs/Groups/OPFOR/KLMK/Group_USSR_ReconTeam.et" {
+ ID "B91F1A0000000006"
+ m_aUnitPrefabSlots {
+  "{78976C69F927A7B1}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Sharpshooter.et" "{78976C69F927A7B1}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Sharpshooter.et"
+ }
+}

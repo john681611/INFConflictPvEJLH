@@ -1,0 +1,50 @@
+SCR_CampaignFactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "50A6CDA4F7C1474A"
+ Factions {
+  SCR_CampaignFaction "{50B30C3AF4BFD934}" {
+   m_aFriendlyFactionsIds {
+    "FIA" "RHS_AFRF"
+   }
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{5C68A0E9BD5E5DD9}" : "{FABE1A78C3709433}Configs/EntityCatalog/RHS_MSV/MSV_EMR_Characters.conf" {
+    }
+    SCR_EntityCatalogMultiList "{5C9E82F285C09E24}" : "{4817C4345C248B30}Configs/EntityCatalog/RHS_MSV/MSV_Vehicles.conf" {
+    }
+    SCR_EntityCatalogMultiList "{5C68A0E9B9AA3C2D}" : "{DB327CCD7CD65D3B}Configs/EntityCatalog/RHS_MSV/MSV_Groups.conf" {
+    }
+    SCR_EntityCatalog "{5C68A0E9A51460AB}" : "{C9C16833C8387421}Configs/EntityCatalog/RHS_MSV/MSV_WeaponTripod.conf" {
+    }
+    SCR_EntityCatalogMultiList "{5C68A0E9AFE1E631}" : "{4AB9A3D2B81A7855}Configs/EntityCatalog/RHS_MSV/MSV_InventoryItems.conf" {
+    }
+   }
+   m_DefendersGroupPrefab "{A6A3EDA237E3D336}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/AmbientPatrols/Group_RHS_RF_MSV_VKPO_S_FireGroup_NotSpawned.et"
+  }
+  SCR_CampaignFaction "{50B30C3ADB052C80}" {
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{5C68A0EEB3F124F9}" : "{FFA98C2BD27E14C8}Configs/EntityCatalog/US/InventoryItems_EntityCatalog_INF.conf" {
+     m_eEntityCatalogType ITEM
+    }
+   }
+  }
+  SCR_CampaignFaction "{56F0C3A6336375DC}" {
+   m_aFriendlyFactionsIds {
+    "RHS_AFRF" "USSR"
+   }
+  }
+  SCR_CampaignFaction "{69CA7626B7EBC883}" : "{C3C8730223A0688E}Configs/Factions/RHS_RF_MSV_Campaign.conf" {
+   m_bIsPlayable 0
+   m_aFriendlyFactionsIds + {
+    "FIA"
+   }
+  }
+  SCR_CampaignFaction "{69CA7626B9FDD54B}" : "{02D40AEC45F57851}Configs/Factions/RHS_US_USMC_Campaign.conf" {
+   m_bIsPlayable 0
+  }
+  SCR_Faction "{69CA7626D22822FC}" : "{CB76A36EACFBDF35}Configs/Factions/RHS_ION.conf" {
+   m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "FIA"
+   }
+  }
+ }
+}

@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{AAE710F15D0C4B01}Prefabs/Groups/JLH_DCF/JLH_USSR_TransportAssaultGroup_15Man.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

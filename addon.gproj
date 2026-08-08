@@ -1,0 +1,22 @@
+GameProject {
+ ID "INFConflictPvEJLH"
+ GUID "69C29B4DDDEDF545"
+ TITLE "INFConflictPvEJLH"
+ Dependencies {
+  "5E92F5A4A1B75A75" "69514E566DDEE29F" "693B5A031A238A1A" "65D3460733822D72" "58D0FB3206B6F859" "64610AFB74AA9842"
+ }
+ Configurations {
+  GameProjectConfig PC {
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig PS5 {
+  }
+  GameProjectConfig HEADLESS {
+  }
+ }
+}
