@@ -1,5 +1,6 @@
 SCR_AIGroup : "{06F0C9675883F18A}Prefabs/Groups/OPFOR/KLMK/Group_USSR_ReconTeam.et" {
  ID "70F1A7E33C6B4216"
+ m_faction "RHS_AFRF"
  m_aUnitPrefabSlots {
   "{4C979E19C89FC16A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO3_EMR/RandomSoldiers/Character_RHS_RF_MSV_VKPO_3.0_Sharpshooter_Random.et"
  }

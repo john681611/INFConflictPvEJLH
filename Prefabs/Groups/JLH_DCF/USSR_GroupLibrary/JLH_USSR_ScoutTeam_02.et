@@ -1,5 +1,6 @@
 SCR_AIGroup : "{26099EE31B5CC43A}Prefabs/Groups/OPFOR/Naval_Infantry/Group_USSR_FireGroup_NI.et" {
  ID "70F1A7E33C6B4208"
+ m_faction "RHS_AFRF"
  m_aUnitPrefabSlots {
   "{74907740653C5830}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Sharpshooter_Random.et" "{5C75226D45102461}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Rifleman_Random.et" "{84D4D1150FF68014}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Scout_RadioRecon_Random.et"
  }

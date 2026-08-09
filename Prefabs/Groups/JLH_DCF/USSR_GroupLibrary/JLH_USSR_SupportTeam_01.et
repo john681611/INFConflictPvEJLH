@@ -1,5 +1,6 @@
 SCR_AIGroup : "{A2F75E45C66B1C0A}Prefabs/Groups/OPFOR/Group_USSR_MachineGunTeam.et" {
  ID "70F1A7E33C6B4215"
+ m_faction "RHS_AFRF"
  m_aUnitPrefabSlots {
   "{2113EE7AFFE66688}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO3_EMR/RandomSoldiers/Character_RHS_RF_MSV_VKPO_3.0_SL_Random.et" "{9346DF38AE9494D5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO3_EMR/RandomSoldiers/Character_RHS_RF_MSV_VKPO_3.0_AR_Random.et" "{C8338815A75BDEBB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO3_EMR/RandomSoldiers/Character_RHS_RF_MSV_VKPO_3.0_MG_Random.et" "{E55C5AB67AC54638}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO3_EMR/RandomSoldiers/Character_RHS_RF_MSV_VKPO_3.0_Rifleman_Random.et" "{9346DF38AE9494D5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO3_EMR/RandomSoldiers/Character_RHS_RF_MSV_VKPO_3.0_AR_Random.et"
  }

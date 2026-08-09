@@ -1,5 +1,6 @@
 SCR_AIGroup : "{666A2B0A6B1967AE}Prefabs/Groups/OPFOR/Spetsnaz/Suppressed/Group_USSR_Spetsnaz_ReconSquad.et" {
  ID "70F1A7E33C6B4207"
+ m_faction "RHS_AFRF"
  m_aUnitPrefabSlots {
   "{74907740653C5830}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Sharpshooter_Random.et" "{E57237663E203AF1}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Scout_Random.et"
  }
