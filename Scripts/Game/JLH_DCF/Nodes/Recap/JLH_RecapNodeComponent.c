@@ -3856,9 +3856,6 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		if (!group)
 			return null;
 
-		if (requestedMembers > 0)
-			group.SetNumberOfMembersToSpawn(requestedMembers);
-
 		if (!group.GetSpawnImmediately())
 			group.SpawnUnits();
 
@@ -3880,6 +3877,9 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		SCR_AIGroup group = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams));
 		if (!group)
 			return null;
+
+		if (requestedMembers > 0)
+			group.SetNumberOfMembersToSpawn(requestedMembers);
 
 		if (!group.GetSpawnImmediately())
 			group.SpawnUnits();
@@ -5123,7 +5123,7 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		if (!JLH_DCF_GhostPlacement.ResolveInfantryPosition("0 0 0", false, defendTarget, groups.Count() + 1, m_aAttackInfantrySpawnPositions, GHOST_DEFENCE_INFANTRY_SPACING_METERS, GHOST_DEFENCE_SAFE_SPAWN_DISTANCE, spawnPosition, placementSource, skippedReason))
 			return false;
 
-		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, GetOwner(), spawnPosition, infantryPackage.UnitCount);
+		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, GetOwner(), spawnPosition);
 		if (!group)
 			return false;
 

@@ -941,6 +941,9 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 	protected static const ResourceName ROADBLOCK_ASSAULT_GROUP_US = "{84E5BBAB25EA23E5}Prefabs/Groups/BLUFOR/Group_US_FireTeam.et";
 	protected static const ResourceName ROADBLOCK_ASSAULT_GROUP_USSR_AT = "{96BAB56E6558788E}Prefabs/Groups/OPFOR/Group_USSR_Team_AT.et";
 	protected static const ResourceName ROADBLOCK_ASSAULT_GROUP_USSR_FIRE = "{30ED11AA4F0D41E5}Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et";
+	protected static const int ROADBLOCK_ASSAULT_GROUP_US_REQUESTED_UNITS = 4;
+	protected static const int ROADBLOCK_ASSAULT_GROUP_USSR_AT_REQUESTED_UNITS = 2;
+	protected static const int ROADBLOCK_ASSAULT_GROUP_USSR_FIRE_REQUESTED_UNITS = 6;
 	protected static const ResourceName ROADBLOCK_ASSAULT_WAYPOINT_SEARCH_AND_DESTROY = "Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et";
 	protected static const ResourceName CAMP_ASSAULT_GROUP_US_DEFENDERS_6 = "{B0F1A7E33C6C4304}Prefabs/Groups/JLH_DCF/US_GroupLibrary/JLH_US_CampDefenders_6Man.et";
 	protected static const ResourceName CAMP_ASSAULT_GROUP_USSR_FIRETEAM_4 = "{657590C1EC9E27D3}Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et";
@@ -2013,14 +2016,14 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 		LogEvent("roadblock_placed", "pos=" + roadblockPosition.ToString() + " direction=" + roadDirection.ToString() + " prefab=" + ROADBLOCK_ASSAULT_COMPOSITION_USSR, true);
 
 		array<SCR_AIGroup> enemyGroups = {};
-		SCR_AIGroup ussrATGroup = SpawnRoadblockAssaultGroup(ROADBLOCK_ASSAULT_GROUP_USSR_AT, defenderATPosition, "ussr_at_team", enemyGroups, reason);
+		SCR_AIGroup ussrATGroup = SpawnRoadblockAssaultGroup(ROADBLOCK_ASSAULT_GROUP_USSR_AT, defenderATPosition, "ussr_at_team", enemyGroups, reason, ROADBLOCK_ASSAULT_GROUP_USSR_AT_REQUESTED_UNITS);
 		if (!ussrATGroup)
 		{
 			JLH_AddonSpawnUtility.DeleteRuntimeEntity(roadblockEntity, "roadblock_assault_orphan_cleanup_composition");
 			return false;
 		}
 
-		SCR_AIGroup ussrFireGroup = SpawnRoadblockAssaultGroup(ROADBLOCK_ASSAULT_GROUP_USSR_FIRE, defenderFirePosition, "ussr_firegroup", enemyGroups, reason);
+		SCR_AIGroup ussrFireGroup = SpawnRoadblockAssaultGroup(ROADBLOCK_ASSAULT_GROUP_USSR_FIRE, defenderFirePosition, "ussr_firegroup", enemyGroups, reason, ROADBLOCK_ASSAULT_GROUP_USSR_FIRE_REQUESTED_UNITS);
 		if (!ussrFireGroup)
 		{
 			CleanupSpawnedGroups(enemyGroups, "roadblock_assault_enemy_partial_cleanup");
@@ -2032,7 +2035,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 		LogEvent("ussr_defenders_spawned", "groups=2 units=" + enemyAlive.ToString() + " atPos=" + defenderATPosition.ToString() + " firePos=" + defenderFirePosition.ToString(), true);
 
 		array<SCR_AIGroup> friendlyGroups = {};
-		SCR_AIGroup usAttackTeam = SpawnRoadblockAssaultGroup(ROADBLOCK_ASSAULT_GROUP_US, attackerPosition, "us_fireteam", friendlyGroups, reason);
+		SCR_AIGroup usAttackTeam = SpawnRoadblockAssaultGroup(ROADBLOCK_ASSAULT_GROUP_US, attackerPosition, "us_fireteam", friendlyGroups, reason, ROADBLOCK_ASSAULT_GROUP_US_REQUESTED_UNITS);
 		if (!usAttackTeam)
 		{
 			CleanupSpawnedGroups(enemyGroups, "roadblock_assault_enemy_orphan_cleanup");
@@ -7136,7 +7139,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 		return !outGroups.IsEmpty();
 	}
 
-	protected SCR_AIGroup SpawnRoadblockAssaultGroup(ResourceName prefab, vector position, string label, notnull array<SCR_AIGroup> outGroups, out string reason)
+	protected SCR_AIGroup SpawnRoadblockAssaultGroup(ResourceName prefab, vector position, string label, notnull array<SCR_AIGroup> outGroups, out string reason, int requestedMembers = -1)
 	{
 		reason = "";
 		if (prefab == "" || !JLH_AddonSpawnUtility.CanLoadPrefab(prefab))
@@ -7145,7 +7148,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 			return null;
 		}
 
-		SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(prefab, position, "roadblock_assault_" + label);
+		SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(prefab, position, "roadblock_assault_" + label, requestedMembers);
 		if (!group)
 		{
 			reason = "roadblock_assault_group_spawn_failed_" + label;

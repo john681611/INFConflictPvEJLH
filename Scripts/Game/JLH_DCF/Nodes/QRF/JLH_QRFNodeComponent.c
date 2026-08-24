@@ -6969,7 +6969,7 @@ class JLH_QRFNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		if (!JLH_DCF_GhostPlacement.ResolveInfantryPosition("0 0 0", false, defendTarget, groups.Count() + 1, m_aCurrentWaveInfantrySpawnPositions, QRF_VIRTUAL_WAVE_INFANTRY_SPACING_METERS, QRF_VIRTUAL_WAVE_SAFE_SPAWN_DISTANCE, spawnPosition, placementSource, skippedReason))
 			return false;
 
-		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, spawnPosition, infantryPackage.UnitCount);
+		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, spawnPosition);
 		if (!group)
 			return false;
 
@@ -7025,7 +7025,7 @@ class JLH_QRFNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 			return false;
 		}
 
-		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, spawnPosition);
+		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, spawnPosition, infantryPackage.UnitCount);
 		if (!group)
 		{
 			JLH_DCF_NodeDebug.Log(SYSTEM_NAME, string.Format("Ghost defence infantry skipped base=%1 package=%2 originalPrefab=%3 preferredPosition=%4 resolvedPosition=%5 placementSource=%6 skippedReason=spawn_failed", m_sBaseName, packageIndex, prefab, infantryPackage.LastKnownPosition.ToString(), spawnPosition.ToString(), placementSource), true);
