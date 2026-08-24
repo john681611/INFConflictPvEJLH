@@ -3856,6 +3856,9 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		if (!group)
 			return null;
 
+		if (requestedMembers > 0)
+			group.SetNumberOfMembersToSpawn(requestedMembers);
+
 		if (!group.GetSpawnImmediately())
 			group.SpawnUnits();
 
@@ -3864,7 +3867,7 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		return group;
 	}
 
-	protected SCR_AIGroup SpawnGroupPrefab(ResourceName groupPrefab, IEntity owner)
+	protected SCR_AIGroup SpawnGroupPrefab(ResourceName groupPrefab, IEntity owner, int requestedMembers = -1)
 	{
 		Resource resource = Resource.Load(groupPrefab);
 		if (!resource || !resource.IsValid() || !owner || !GetGame() || !GetGame().GetWorld())
@@ -5120,7 +5123,7 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		if (!JLH_DCF_GhostPlacement.ResolveInfantryPosition("0 0 0", false, defendTarget, groups.Count() + 1, m_aAttackInfantrySpawnPositions, GHOST_DEFENCE_INFANTRY_SPACING_METERS, GHOST_DEFENCE_SAFE_SPAWN_DISTANCE, spawnPosition, placementSource, skippedReason))
 			return false;
 
-		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, GetOwner(), spawnPosition);
+		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, GetOwner(), spawnPosition, infantryPackage.UnitCount);
 		if (!group)
 			return false;
 
@@ -5177,7 +5180,7 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 			return false;
 		}
 
-		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, GetOwner(), spawnPosition);
+		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, GetOwner(), spawnPosition, infantryPackage.UnitCount);
 		if (!group)
 		{
 			JLH_DCF_NodeDebug.Log(SYSTEM_NAME, string.Format("Ghost defence infantry skipped base=%1 package=%2 originalPrefab=%3 preferredPosition=%4 resolvedPosition=%5 placementSource=%6 skippedReason=spawn_failed", m_sBaseName, packageIndex, prefab, infantryPackage.LastKnownPosition.ToString(), spawnPosition.ToString(), placementSource), true);
@@ -5370,7 +5373,7 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		return IsVehicleHoldPositionClear(candidate, defendTarget, reason);
 	}
 
-	protected SCR_AIGroup SpawnGroupPrefabAt(ResourceName groupPrefab, IEntity owner, vector position)
+	protected SCR_AIGroup SpawnGroupPrefabAt(ResourceName groupPrefab, IEntity owner, vector position, int requestedMembers = -1)
 	{
 		Resource resource = Resource.Load(groupPrefab);
 		if (!resource || !resource.IsValid())
@@ -5387,6 +5390,9 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		SCR_AIGroup group = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams));
 		if (!group)
 			return null;
+
+		if (requestedMembers > 0)
+			group.SetNumberOfMembersToSpawn(requestedMembers);
 
 		if (!group.GetSpawnImmediately())
 			group.SpawnUnits();

@@ -1938,7 +1938,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 			}
 
 			vector spawnPosition = positions[Math.Min(i, positions.Count() - 1)];
-			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, spawnPosition, "camp_assault_ussr_attacker_" + i.ToString());
+			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, spawnPosition, "camp_assault_ussr_attacker_" + i.ToString(), selection.EstimatedUnits);
 			if (!group)
 			{
 				CleanupSpawnedGroups(outGroups, "camp_assault_enemy_partial_cleanup_spawn_failed");
@@ -3169,7 +3169,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 			else if (!positions.IsEmpty())
 				position = positions[positions.Count() - 1];
 
-			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, position, "convoy_ambush_" + sideLabel + "_group_spawn_" + i.ToString());
+			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, position, "convoy_ambush_" + sideLabel + "_group_spawn_" + i.ToString(), selection.EstimatedUnits);
 			if (!group)
 			{
 				CleanupSpawnedGroups(outGroups, "convoy_ambush_" + sideLabel + "_partial_cleanup_spawn_failed");
@@ -7100,9 +7100,9 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 				groupPosition = BuildComposedGroupPositionWithSpacing(basePosition, i, plan.Groups.Count(), groupOffsetSpacing);
 			SCR_AIGroup group;
 			if (markerCursor < exactMarkers.Count() && exactMarkers[markerCursor])
-				group = JLH_AddonSpawnUtility.SpawnGroupAtExactTransform(selection.Prefab, exactMarkers[markerCursor], "ambient_skirmish_" + sideLabel + "_group_spawn_exact_marker_" + i.ToString());
+				group = JLH_AddonSpawnUtility.SpawnGroupAtExactTransform(selection.Prefab, exactMarkers[markerCursor], "ambient_skirmish_" + sideLabel + "_group_spawn_exact_marker_" + i.ToString(), selection.EstimatedUnits);
 			else
-				group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, groupPosition, "ambient_skirmish_" + sideLabel + "_group_spawn_" + i.ToString());
+				group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, groupPosition, "ambient_skirmish_" + sideLabel + "_group_spawn_" + i.ToString(), selection.EstimatedUnits);
 
 			if (!group)
 			{
@@ -7185,7 +7185,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 				spawnPosition = BuildComposedGroupPosition(center, i, plan.Groups.Count());
 
 			spawnPosition = JLH_AddonWorldQuery.GroundPosition(spawnPosition);
-			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, spawnPosition, "roadblock_breakthrough_" + sideLabel + "_group_" + i.ToString());
+			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, spawnPosition, "roadblock_breakthrough_" + sideLabel + "_group_" + i.ToString(), selection.EstimatedUnits);
 			if (!group)
 			{
 				CleanupSpawnedGroups(outGroups, "roadblock_breakthrough_" + sideLabel + "_partial_cleanup_spawn_failed");
@@ -7243,7 +7243,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 				depthOffset = -10.0;
 
 			vector spawnPosition = JLH_AddonWorldQuery.GroundPosition(attackerPosition + (lateral * lineOffset) + (approachDirection * depthOffset));
-			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, spawnPosition, "roadblock_breakthrough_us_push_group_" + i.ToString());
+			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, spawnPosition, "roadblock_breakthrough_us_push_group_" + i.ToString(), selection.EstimatedUnits);
 			if (!group)
 			{
 				CleanupSpawnedGroups(outGroups, "roadblock_breakthrough_friendly_partial_cleanup_spawn_failed");
@@ -7902,7 +7902,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 				return false;
 			}
 
-			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, groupPosition, "ambient_skirmish_enemy_radial_group_spawn_" + i.ToString());
+			SCR_AIGroup group = JLH_AddonSpawnUtility.SpawnGroup(selection.Prefab, groupPosition, "ambient_skirmish_enemy_radial_group_spawn_" + i.ToString(), selection.EstimatedUnits);
 			if (!group)
 			{
 				CleanupSpawnedGroups(outGroups, "ambient_skirmish_enemy_radial_partial_cleanup_spawn_failed");

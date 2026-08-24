@@ -41,7 +41,7 @@ class JLH_AddonSpawnUtility
 			s_mPrefabLoadValidationCache.Clear();
 	}
 
-	static SCR_AIGroup SpawnGroup(ResourceName groupPrefab, vector position, string reason)
+	static SCR_AIGroup SpawnGroup(ResourceName groupPrefab, vector position, string reason, int requestedMembers = -1)
 	{
 		Resource resource = Resource.Load(groupPrefab);
 		if (!resource || !resource.IsValid() || !GetGame() || !GetGame().GetWorld())
@@ -55,10 +55,10 @@ class JLH_AddonSpawnUtility
 		if (!group)
 			return null;
 
-		return PrepareSpawnedGroup(group, reason, true);
+		return PrepareSpawnedGroup(group, reason, true, requestedMembers);
 	}
 
-	static SCR_AIGroup SpawnGroupDormant(ResourceName groupPrefab, vector position, string reason)
+	static SCR_AIGroup SpawnGroupDormant(ResourceName groupPrefab, vector position, string reason, int requestedMembers = -1)
 	{
 		Resource resource = Resource.Load(groupPrefab);
 		if (!resource || !resource.IsValid() || !GetGame() || !GetGame().GetWorld())
@@ -72,10 +72,10 @@ class JLH_AddonSpawnUtility
 		if (!group)
 			return null;
 
-		return PrepareSpawnedGroup(group, reason, false);
+		return PrepareSpawnedGroup(group, reason, false, requestedMembers);
 	}
 
-	static SCR_AIGroup SpawnGroupAtExactTransform(ResourceName groupPrefab, IEntity transformSource, string reason)
+	static SCR_AIGroup SpawnGroupAtExactTransform(ResourceName groupPrefab, IEntity transformSource, string reason, int requestedMembers = -1)
 	{
 		if (!transformSource)
 			return null;
@@ -92,10 +92,10 @@ class JLH_AddonSpawnUtility
 		if (!group)
 			return null;
 
-		return PrepareSpawnedGroup(group, reason, true);
+		return PrepareSpawnedGroup(group, reason, true, requestedMembers);
 	}
 
-	static SCR_AIGroup SpawnGroupAtExactTransformDormant(ResourceName groupPrefab, IEntity transformSource, string reason)
+	static SCR_AIGroup SpawnGroupAtExactTransformDormant(ResourceName groupPrefab, IEntity transformSource, string reason, int requestedMembers = -1)
 	{
 		if (!transformSource)
 			return null;
@@ -112,13 +112,16 @@ class JLH_AddonSpawnUtility
 		if (!group)
 			return null;
 
-		return PrepareSpawnedGroup(group, reason, false);
+		return PrepareSpawnedGroup(group, reason, false, requestedMembers);
 	}
 
-	protected static SCR_AIGroup PrepareSpawnedGroup(SCR_AIGroup group, string reason, bool activate)
+	protected static SCR_AIGroup PrepareSpawnedGroup(SCR_AIGroup group, string reason, bool activate, int requestedMembers = -1)
 	{
 		if (!group)
 			return null;
+
+		if (requestedMembers > 0)
+			group.SetNumberOfMembersToSpawn(requestedMembers);
 
 		if (!group.GetSpawnImmediately())
 			group.SpawnUnits();

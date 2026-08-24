@@ -1318,7 +1318,7 @@ class JLH_QRFNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		}
 
 		LogGroupPrefabSelected("virtual_wave_package", m_iCurrentWave, packageIndex, prefab);
-		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, spawnPosition);
+		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, spawnPosition, infantryPackage.UnitCount);
 		if (!group)
 		{
 			JLH_DCF_NodeDebug.Log(SYSTEM_NAME, string.Format("Virtual wave infantry skipped base=%1 wave=%2 package=%3 originalPrefab=%4 preferredPosition=%5 resolvedPosition=%6 placementSource=%7 skippedReason=spawn_failed", m_sBaseName, m_iCurrentWave, packageIndex, prefab, infantryPackage.LastKnownPosition.ToString(), spawnPosition.ToString(), placementSource), true);
@@ -1387,7 +1387,7 @@ class JLH_QRFNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		return true;
 	}
 
-	protected SCR_AIGroup SpawnGroupPrefabAt(ResourceName groupPrefab, vector position)
+	protected SCR_AIGroup SpawnGroupPrefabAt(ResourceName groupPrefab, vector position, int requestedMembers = -1)
 	{
 		Resource resource = Resource.Load(groupPrefab);
 		if (!resource || !resource.IsValid())
@@ -1408,6 +1408,9 @@ class JLH_QRFNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		SCR_AIGroup group = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams));
 		if (!group)
 			return null;
+
+		if (requestedMembers > 0)
+			group.SetNumberOfMembersToSpawn(requestedMembers);
 
 		if (!group.GetSpawnImmediately())
 			group.SpawnUnits();
@@ -6966,7 +6969,7 @@ class JLH_QRFNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		if (!JLH_DCF_GhostPlacement.ResolveInfantryPosition("0 0 0", false, defendTarget, groups.Count() + 1, m_aCurrentWaveInfantrySpawnPositions, QRF_VIRTUAL_WAVE_INFANTRY_SPACING_METERS, QRF_VIRTUAL_WAVE_SAFE_SPAWN_DISTANCE, spawnPosition, placementSource, skippedReason))
 			return false;
 
-		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, spawnPosition);
+		SCR_AIGroup group = SpawnGroupPrefabAt(prefab, spawnPosition, infantryPackage.UnitCount);
 		if (!group)
 			return false;
 
