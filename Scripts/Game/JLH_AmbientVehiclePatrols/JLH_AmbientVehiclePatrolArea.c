@@ -1769,7 +1769,7 @@ class JLH_AmbientVehiclePatrolAreaComponent : ScriptComponent
 		if (!compartment)
 			return false;
 
-		return SCR_CompartmentAccessComponent.GetCompartmentType(compartment) == compartmentType;
+		return compartment.GetType() == compartmentType;
 	}
 
 	protected bool IsUnitInGunnerRole(IEntity unit, IEntity vehicle)

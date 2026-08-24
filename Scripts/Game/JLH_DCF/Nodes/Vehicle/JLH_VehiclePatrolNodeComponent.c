@@ -741,7 +741,6 @@ class JLH_VehiclePatrolNodeComponent : ScriptComponent
 		if (candidates.IsEmpty())
 			return ResourceName.Empty;
 
-		Math.Randomize(-1);
 		SCR_EntityCatalogEntry selected = candidates.GetRandomElement();
 		if (!selected)
 			return ResourceName.Empty;
@@ -1815,7 +1814,7 @@ class JLH_VehiclePatrolNodeComponent : ScriptComponent
 		if (!compartment)
 			return false;
 
-		return SCR_CompartmentAccessComponent.GetCompartmentType(compartment) == compartmentType;
+		return compartment.GetType() == compartmentType;
 	}
 
 	protected bool IsUnitInGunnerRole(IEntity unit, IEntity vehicle)
@@ -1830,7 +1829,7 @@ class JLH_VehiclePatrolNodeComponent : ScriptComponent
 		BaseCompartmentSlot compartment = access.GetCompartment();
 		if (compartment)
 		{
-			ECompartmentType compartmentType = SCR_CompartmentAccessComponent.GetCompartmentType(compartment);
+			ECompartmentType compartmentType = compartment.GetType();
 			if (compartmentType == ECompartmentType.TURRET)
 				return true;
 

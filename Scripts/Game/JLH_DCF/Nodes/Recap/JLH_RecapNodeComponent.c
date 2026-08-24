@@ -2693,7 +2693,7 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		if (!compartment)
 			return false;
 
-		return SCR_CompartmentAccessComponent.GetCompartmentType(compartment) == compartmentType;
+		return compartment.GetType() == compartmentType;
 	}
 
 	protected bool IsUnitInGunnerRole(IEntity unit, IEntity vehicle)
@@ -2708,7 +2708,7 @@ class JLH_RecapNodeComponent : SCR_AmbientPatrolSpawnPointComponent
 		BaseCompartmentSlot compartment = access.GetCompartment();
 		if (compartment)
 		{
-			ECompartmentType compartmentType = SCR_CompartmentAccessComponent.GetCompartmentType(compartment);
+			ECompartmentType compartmentType = compartment.GetType();
 			if (compartmentType == ECompartmentType.TURRET)
 				return true;
 

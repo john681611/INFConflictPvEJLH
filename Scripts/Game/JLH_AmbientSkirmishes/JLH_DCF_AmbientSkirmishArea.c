@@ -6217,7 +6217,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 		if (!compartment)
 			return false;
 
-		return SCR_CompartmentAccessComponent.GetCompartmentType(compartment) == compartmentType;
+		return compartment.GetType() == compartmentType;
 	}
 
 	protected bool TryEjectSkirmishUnitFromVehicle(IEntity unit, IEntity vehicle, string reason)
@@ -6312,7 +6312,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 			return "UNKNOWN";
 		}
 
-		ECompartmentType compartmentType = SCR_CompartmentAccessComponent.GetCompartmentType(compartment);
+		ECompartmentType compartmentType = compartment.GetType();
 		string label = "UNKNOWN";
 		if (compartmentType == ECompartmentType.PILOT)
 			label = "PILOT";
@@ -6339,7 +6339,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 		BaseCompartmentSlot compartment = access.GetCompartment();
 		if (compartment)
 		{
-			ECompartmentType compartmentType = SCR_CompartmentAccessComponent.GetCompartmentType(compartment);
+			ECompartmentType compartmentType = compartment.GetType();
 			if (compartmentType == ECompartmentType.TURRET)
 				return true;
 		}
@@ -6349,7 +6349,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 
 		if (compartment)
 		{
-			ECompartmentType finalCompartmentType = SCR_CompartmentAccessComponent.GetCompartmentType(compartment);
+			ECompartmentType finalCompartmentType = compartment.GetType();
 			if (finalCompartmentType == ECompartmentType.PILOT || finalCompartmentType == ECompartmentType.CARGO)
 				return false;
 		}
@@ -6369,7 +6369,7 @@ class JLH_DCF_AmbientSkirmishAreaComponent : ScriptComponent
 		BaseCompartmentSlot compartment = access.GetCompartment();
 		if (compartment)
 		{
-			ECompartmentType compartmentType = SCR_CompartmentAccessComponent.GetCompartmentType(compartment);
+			ECompartmentType compartmentType = compartment.GetType();
 			if (compartmentType == ECompartmentType.TURRET)
 				return true;
 
